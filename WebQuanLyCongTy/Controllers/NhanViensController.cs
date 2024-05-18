@@ -15,9 +15,14 @@ namespace WebQuanLyCongTy.Controllers
         private dbQuanLyCongTyEntities db = new dbQuanLyCongTyEntities();
 
         // GET: NhanViens
-        public ActionResult Index()
+        public ActionResult Index(String txtSearch)
         {
             var nhanVien = db.NhanVien.Include(n => n.ChucVu).Include(n => n.PhongBan);
+            if (txtSearch != null)
+            {
+                nhanVien = nhanVien.Where(nv => nv.HoTen.Contains(txtSearch) || nv.username.Contains(txtSearch) || nv.Email.Contains(txtSearch));
+                ViewBag.txtSearch = txtSearch;
+            }
             return View(nhanVien.ToList());
         }
 
