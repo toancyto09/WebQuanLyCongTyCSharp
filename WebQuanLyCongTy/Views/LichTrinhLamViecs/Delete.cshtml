@@ -1,0 +1,54 @@
+﻿@model WebQuanLyCongTy.Models.LichTrinhLamViec
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2 style="background-color: #e33c3c; height: 58px; text-align: center; color: white; padding: 8px;">Xóa Lịch Trình</h2>
+
+<h3>Bạn chắc chắn muốn xóa?</h3>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenCongViec)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenCongViec)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThoiGian)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThoiGian)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Thumbnail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Thumbnail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NhanVien.username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NhanVien.username)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <input type="submit" value="Delete" class="btn btn-default" style="background: red; color: white;" />|
+    @Html.ActionLink("Back to List", "Index")
+</div>
+    }
+</div>

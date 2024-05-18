@@ -129,7 +129,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LichTrinhLamViecsController.cs" />
     <Compile Include="Controllers\NhanViensController.cs" />
+    <Compile Include="Controllers\PhongBansController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -231,6 +233,14 @@
     <Content Include="Views\NhanViens\Details.cshtml" />
     <Content Include="Views\NhanViens\Edit.cshtml" />
     <Content Include="Views\NhanViens\Index.cshtml" />
+    <Content Include="Views\LichTrinhLamViecs\Create.cshtml" />
+    <Content Include="Views\LichTrinhLamViecs\Delete.cshtml" />
+    <Content Include="Views\LichTrinhLamViecs\Edit.cshtml" />
+    <Content Include="Views\LichTrinhLamViecs\Index.cshtml" />
+    <Content Include="Views\PhongBans\Create.cshtml" />
+    <Content Include="Views\PhongBans\Delete.cshtml" />
+    <Content Include="Views\PhongBans\Edit.cshtml" />
+    <Content Include="Views\PhongBans\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
