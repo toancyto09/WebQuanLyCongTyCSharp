@@ -55,9 +55,13 @@
 
         <div class="content">
             <section class="search-add-section">
+                
                 <div class="search-bar">
-                    <input type="text" placeholder="Search..." class="search-input">
-                    <button type="submit" class="search-button">Tìm</button>
+                    <form action="~/NhanViens/Index" method="get">
+                        <input type="text" name="txtSearch" value="@ViewBag.txtSearch" placeholder="Search..." class="search-input">
+                        <button type="submit" class="search-button">Tìm</button>
+                    </form>
+                   
                 </div>
                 <button class="add-button">
                     @Html.ActionLink("Create New", "Create")
