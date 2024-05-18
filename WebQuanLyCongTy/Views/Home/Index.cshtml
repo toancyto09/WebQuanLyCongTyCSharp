@@ -1,0 +1,128 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Công Ty TH</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" />
+    <link href="~/css/templatemo-style.css" rel="stylesheet" />   
+</head>
+<!--
+
+-->
+
+<body>
+
+    <div class="container">
+        <div class="placeholder">
+            <div class="parallax-window" data-parallax="scroll" data-image-src="~/img/simple-house-01.jpg">
+                <div class="tm-header">
+                    <div class="row tm-header-inner">
+                        <div class="col-md-6 col-12">
+                            <img src="~/img/simple-house-logo.png" alt="Logo" class="tm-site-logo" />
+                            <div class="tm-site-text-box">
+                                <h1 class="tm-site-title">Công Ty TH</h1>
+                                <h6 class="tm-site-description">Hỗ Trợ Tài Chính</h6>
+                            </div>
+                        </div>
+                        <nav class="col-md-6 col-12 tm-nav">
+                            <ul class="tm-nav-ul">
+                                <li class="tm-nav-li">
+                                    @Html.ActionLink("Quản lý nhân viên", "Index", "Nhanviens", new { area = "" }, new { @class = "tm-nav-link" })
+                                </li>
+
+                                <li class="tm-nav-li"><a href="about.html" class="tm-nav-link">About</a></li>
+                                <li class="tm-nav-li"><a href="contact.html" class="tm-nav-link">Contact</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <main>
+            <header class="row tm-welcome-section">
+                <div class="search">
+                    <input placeholder="Search..." type="text">
+                    <button type="submit">Tìm kiếm</button>
+                </div>
+                <h2 class="col-12 text-center tm-section-title">Welcome to TH Finance</h2>
+                <p class="col-12 text-center">
+                    Total 3 HTML pages are included in this template. Header image has a parallax
+                    effect. You can feel free to download, edit and use this TemplateMo layout for your commercial or
+                    non-commercial websites.
+                </p>
+            </header>
+
+            <div class="tm-paging-links">
+                <nav>
+                    <ul>
+                        <li class="tm-paging-item"><a href="#" class="tm-paging-link active">Thông báo</a></li>
+                        <li class="tm-paging-item"><a href="#" class="tm-paging-link">Lịch trình làm việc</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Gallery -->
+            <div class="row tm-gallery">
+                <!-- gallery page 1 -->
+                <div id="tm-gallery-page-pizza" class="tm-gallery-page">
+                    <article class="tm-gallery-item">
+                        <figure>
+                            <img src="~/img/BaiDang/01.jpg" alt="Image" class="img-fluid tm-gallery-img" />
+                            <figcaption>
+                                <h4 class="tm-gallery-title">Fusce dictum finibus</h4>
+                                <p class="tm-gallery-description">
+                                    Nam in suscipit nisi, sit amet consectetur metus. Ut sit amet tellus
+                                    accumsan
+                                </p>
+                                <p class="tm-gallery-price">$45 / $55</p>
+                            </figcaption>
+                        </figure>
+                    </article>
+                    <article class="tm-gallery-item">
+                        <figure>
+                            <img src="~/img/BaiDang/02.jpg" alt="Image" class="img-fluid tm-gallery-img" />
+                            <figcaption>
+                                <h4 class="tm-gallery-title">Salad Menu One</h4>
+                                <p class="tm-gallery-description">
+                                    Proin eu velit egestas, viverra sapien eget, consequat nunc.
+                                    Vestibulum tristique
+                                </p>
+                                <p class="tm-gallery-price">$25</p>
+                            </figcaption>
+                        </figure>
+                    </article>
+                </div> <!-- gallery page 1 -->
+            </div>
+        </main>
+
+        <footer class="tm-footer text-center">
+            <p>Copyright &copy; 2024 Simple House
+        </footer>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/parallax.min.js"></script>
+    <script>
+		$(document).ready(function () {
+			// Handle click on paging links
+			$('.tm-paging-link').click(function (e) {
+				e.preventDefault();
+
+				var page = $(this).text().toLowerCase();
+				$('.tm-gallery-page').addClass('hidden');
+				$('#tm-gallery-page-' + page).removeClass('hidden');
+				$('.tm-paging-link').removeClass('active');
+				$(this).addClass("active");
+			});
+		});
+    </script>
+</body>
+
+</html>

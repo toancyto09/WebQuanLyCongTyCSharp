@@ -1,0 +1,131 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+.content {
+    width: 90%;
+    padding: 0 10px;
+    margin: auto;
+}
+
+.header {
+    background-color: #556e5b;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    /* border-radius: 8px; */
+}
+
+.company-title {
+  margin: 0;
+  font-size: 2em;
+  font-weight: 600;
+}
+
+.title-section {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.title-section h2 {
+  margin: 0;
+  font-size: 1.8em;
+  color: #333;
+}
+
+.search-add-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  display: flex;
+}
+
+.search-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+  width: 300px;
+}
+
+.search-button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+
+.add-button {
+        padding: 10px 20px;
+        border: none;
+        background-color: #28a745;
+        color: white;
+        border-radius: 4px;
+        cursor: pointer;
+}
+
+.employee-table-section {
+  margin-top: 20px;
+}
+
+.employee-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.employee-table thead {
+  background-color: #556e5b;
+  color: white;
+}
+
+.employee-table th,
+.employee-table td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.employee-table tbody tr {
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #ddd;
+}
+
+.employee-table tbody tr:nth-of-type(even) {
+  background-color: #f1f1f1;
+}
+
+.employee-table tbody tr:last-of-type {
+  border-bottom: 2px solid #007bff;
+}
+
+.action-button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.view-button {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.edit-button {
+  background-color: #ffc107;
+  color: white;
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+}
