@@ -1,7 +1,8 @@
-﻿@model IEnumerable<WebQuanLyCongTy.Models.LichTrinhLamViec>
+﻿@model IEnumerable<WebQuanLyCongTy.Models.BaiDangThongBao>
 
 @{
-    ViewBag.Title = "Index";
+    Layout = null;
+    WebQuanLyCongTy.Models.BaiDangThongBao tb = ViewBag.lt;
 }
 
 <!DOCTYPE html>
@@ -60,12 +61,12 @@
         <div class="content">
             <section class="search-add-section">
                 <div class="search-bar">
-                    <form action="~/LichTrinhLamViecs/Index" method="get">
+                    <form action="~/BaiDangThongBaos/Index" method="get">
                         <input type="text" name="txtSearch" value="@ViewBag.txtSearch" placeholder="Search..." class="search-input">
                         <button type="submit" class="search-button">Tìm</button>
                     </form>
                 </div>
-                <form method="get" asp-action="~/LichTrinhLamViecs/Index" style=" display: flex; min-width: 200px; align-items: center; margin-bottom: 0px;">
+                <form method="get" asp-action="~/BaiDangThongBaos/Index" style=" display: flex; min-width: 200px; align-items: center; margin-bottom: 0px;">
                     <div class="form-group">
                         <label for="filter">Chọn khoảng thời gian:</label>
                         <select id="filter" name="filter" class="form-control">
@@ -85,39 +86,59 @@
                 <table class="employee-table">
                     <thead>
                         <tr>
-                            <th>Tên công việc</th>
-                            <th>Thời gian</th>
-                            <th>Thumbnail</th>
-                            <th>Nhân viên đăng</th>
+                            <th>
+                                Tiêu đề bài đăng
+                            </th>
+                            <th>
+                                Thumbnail
+                            </th>
+                            <th>
+                                Nội dung
+                            </th>
+                            <th>
+                                Thời gian tạo
+                            </th>
+                            <th>
+                                Nhân viên đăng
+                            </th>
+                            <th>
+                                Thể loại
+                            </th>
                             <th>Hành động</th>
                         </tr>
+
                     </thead>
                     <tbody>
                         @foreach (var item in Model)
                         {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.TenCongViec)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ThoiGian)
-                            </td>
-                            <td>
-                                <img src="~/img/LichTrinh/@item.Thumbnail" style="width:50px"/>
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.NhanVien.HoTen)
-                            </td>
-
-                            <td>
-                                <button class="action-button edit-button">
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.IDLichTrinh })
-                                </button>
-                                <button class="action-button delete-button">
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.IDLichTrinh })
-                                </button>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TieuDe)
+                                </td>
+                                <td>
+                                    <img src="~/img/BaiDang/@item.Thumbnail" style="width:50px" />
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NoiDung)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ThoiGianTao)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NhanVien.HoTen)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TheLoai1.TenTheLoai)
+                                </td>
+                                <td>
+                                    <button class="action-button edit-button">
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.IDBaiDang })
+                                    </button>
+                                    <button class="action-button delete-button">
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.IDBaiDang })
+                                    </button>
+                                </td>
+                            </tr>
                         }
                         <!-- More employee rows here -->
                     </tbody>

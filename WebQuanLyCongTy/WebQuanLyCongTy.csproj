@@ -128,6 +128,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BaiDangThongBaosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LichTrinhLamViecsController.cs" />
     <Compile Include="Controllers\NhanViensController.cs" />
@@ -176,6 +177,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="css\all.min.css" />
+    <Content Include="css\quanlybaidang.css" />
     <Content Include="css\quanlylichtrinh.css" />
     <Content Include="css\quanlynhanvien.css" />
     <Content Include="css\templatemo-style.css" />
@@ -242,6 +244,11 @@
     <Content Include="Views\PhongBans\Delete.cshtml" />
     <Content Include="Views\PhongBans\Edit.cshtml" />
     <Content Include="Views\PhongBans\Index.cshtml" />
+    <Content Include="Views\BaiDangThongBaos\Create.cshtml" />
+    <Content Include="Views\BaiDangThongBaos\Delete.cshtml" />
+    <Content Include="Views\BaiDangThongBaos\Details.cshtml" />
+    <Content Include="Views\BaiDangThongBaos\Edit.cshtml" />
+    <Content Include="Views\BaiDangThongBaos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
