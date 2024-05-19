@@ -1,0 +1,74 @@
+﻿@model WebQuanLyCongTy.Models.BaiDangThongBao
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>BaiDangThongBao</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.TieuDe)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TieuDe)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Thumbnail)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Thumbnail)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.NoiDung)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.NoiDung)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ThoiGianTao)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ThoiGianTao)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.NhanVien.username)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.NhanVien.username)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TheLoai1.TenTheLoai)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TheLoai1.TenTheLoai)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.IDBaiDang }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
