@@ -69,22 +69,20 @@ namespace WebQuanLyCongTy.Controllers
             return View();
         }
 
-        // POST: LichTrinhLamViecs/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IDLichTrinh,TenCongViec,ThoiGian,Thumbnail,NguoiTao")] LichTrinhLamViec lichTrinhLamViec)
+        public ActionResult Create(LichTrinhLamViec lichTrinhLamViec, HttpPostedFileBase anh)
         {
-            if (ModelState.IsValid)
+            if(anh != null)
             {
+                String pathroot = Server.MapPath("/img/LichTrinh/");
+                String pathImage = pathroot + anh.FileName;
+                anh.SaveAs(pathImage);
+                lichTrinhLamViec.Thumbnail = anh.FileName;
+            }
+
                 db.LichTrinhLamViec.Add(lichTrinhLamViec);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }
-
-            ViewBag.NguoiTao = new SelectList(db.NhanVien, "IDNhanVien", "username", lichTrinhLamViec.NguoiTao);
-            return View(lichTrinhLamViec);
         }
 
         // GET: LichTrinhLamViecs/Edit/5
@@ -99,25 +97,30 @@ namespace WebQuanLyCongTy.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.NguoiTao = new SelectList(db.NhanVien, "IDNhanVien", "username", lichTrinhLamViec.NguoiTao);
+            ViewBag.lt = lichTrinhLamViec;
             return View(lichTrinhLamViec);
         }
-
-        // POST: LichTrinhLamViecs/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IDLichTrinh,TenCongViec,ThoiGian,Thumbnail,NguoiTao")] LichTrinhLamViec lichTrinhLamViec)
+        public ActionResult Edit(LichTrinhLamViec lichTrinhLamViec, HttpPostedFileBase anh)
         {
-            if (ModelState.IsValid)
+            if (lichTrinhLamViec.IDLichTrinh == null)
             {
-                db.Entry(lichTrinhLamViec).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ViewBag.NguoiTao = new SelectList(db.NhanVien, "IDNhanVien", "username", lichTrinhLamViec.NguoiTao);
-            return View(lichTrinhLamViec);
+            LichTrinhLamViec lichTrinhLamViecFind = db.LichTrinhLamViec.Find(lichTrinhLamViec.IDLichTrinh);
+            lichTrinhLamViecFind.TenCongViec = lichTrinhLamViec.TenCongViec;
+            lichTrinhLamViecFind.ThoiGian = lichTrinhLamViec.ThoiGian;
+            lichTrinhLamViecFind.NguoiTao = lichTrinhLamViec.NguoiTao;
+            if (anh != null)
+            {
+                String pathroot = Server.MapPath("/img/LichTrinh/");
+                String pathImage = pathroot + anh.FileName;
+                anh.SaveAs(pathImage);
+                lichTrinhLamViecFind.Thumbnail = anh.FileName;
+            }
+            db.SaveChanges();
+            return RedirectToAction("Index");
+
         }
 
         // GET: LichTrinhLamViecs/Delete/5
