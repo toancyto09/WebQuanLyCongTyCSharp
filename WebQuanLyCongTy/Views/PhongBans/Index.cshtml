@@ -1,0 +1,121 @@
+﻿@model IEnumerable<WebQuanLyCongTy.Models.PhongBan>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quản Phòng Ban - Công Ty TH</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap" rel="stylesheet">
+    <link href="~/css/templatemo-style.css" rel="stylesheet" />
+    <link href="~/css/quanlynhanvien.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="placeholder">
+            <div class="parallax-window" data-parallax="scroll" data-image-src="~/img/simple-house-01.jpg">
+                <div class="tm-header">
+                    <div class="row tm-header-inner">
+                        <div class="col-md-6 col-12">
+                            <img src="~/img/simple-house-logo.png" alt="Logo" class="tm-site-logo" />
+                            <div class="tm-site-text-box">
+                                <h1 class="tm-site-title">Công Ty TH</h1>
+                                <h6 class="tm-site-description">Hỗ Trợ Tài Chính</h6>
+                            </div>
+                        </div>
+                        <nav class="col-md-6 col-12 tm-nav">
+                            <ul class="tm-nav-ul">
+                                <li class="tm-nav-li">
+                                    @Html.ActionLink("Quản lý nhân viên", "Index", "Nhanviens", new { area = "" }, new
+                                    {
+                                        @class =
+                                    "tm-nav-link"
+                                    })
+                                </li>
+
+                                <li class="tm-nav-li">
+                                    @Html.ActionLink("Quản lý lịch trình", "Index", "LichtrinhLamViecs", new { area = "" }, new
+                                    {
+                                        @class =
+                                    "tm-nav-link"
+                                    })
+                                </li>
+                                <li class="tm-nav-li">
+                                    @Html.ActionLink("Quản lý nhân viên", "Index", "Nhanviens", new { area = "" }, new
+                                    {
+                                        @class =
+                                    "tm-nav-link"
+                                    })
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="title-section">
+            <h2>Quản Lý Phòng Ban</h2>
+        </section>
+
+        <div class="content">
+            <section class="search-add-section">
+
+                <div class="search-bar">
+                    <form action="~/NhanViens/Index" method="get">
+                        <input type="text" name="txtSearch" value="@ViewBag.txtSearch" placeholder="Search..." class="search-input">
+                        <button type="submit" class="search-button">Tìm</button>
+                    </form>
+
+                </div>
+                <button class="add-button">
+                    @Html.ActionLink("Create New", "Create")
+                </button>
+            </section>
+
+            <section class="employee-table-section">
+                <table class="employee-table">
+                    <thead>
+                        <tr>
+                            <th>ID Phòng Ban</th>
+                            <th>Tên phòng ban</th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    
+                                    @Html.DisplayFor(modelItem => item.IDPhongBan)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TenPhongBan)
+                                </td>
+                                <td>
+                                    <button class="action-button edit-button">
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.IDPhongBan })
+                                    </button>
+                                    <button class="action-button delete-button">
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.IDPhongBan })
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                        <!-- More employee rows here -->
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+﻿@model WebQuanLyCongTy.Models.PhongBan
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2 style="background-color: #e33c3c; height: 58px; text-align: center; color: white; padding: 8px;">Xóa phòng ban</h2>
+
+<h3>Bạn có chắc chắn muốn xóa không ?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenPhongBan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenPhongBan)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" style="background: red; color: white;" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

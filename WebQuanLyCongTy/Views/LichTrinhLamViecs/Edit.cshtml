@@ -1,0 +1,42 @@
+﻿
+@{
+    Layout = null;
+    WebQuanLyCongTy.Models.dbQuanLyCongTyEntities db = new WebQuanLyCongTy.Models.dbQuanLyCongTyEntities();
+    WebQuanLyCongTy.Models.LichTrinhLamViec lt = ViewBag.lt;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/css/quanlylichtrinh.css" rel="stylesheet" />
+</head>
+<body>
+
+    <h2 style="background-color: green; height: 58px; text-align: center; color: white; padding: 8px;">Sửa lịch trình mới</h2>
+
+    <form action="~/LichTrinhLamViecs/Edit" method="post" enctype="multipart/form-data">
+        <input name="IDLichTrinh" type="hidden" value="@lt.IDLichTrinh" />
+        <label>Tên công việc</label>
+        <input type="text" name="TenCongViec" value="@lt.TenCongViec" placeholder="Tên công việc" required />
+        <label>Thời gian</label>
+        <input type="datetime-local" value="@lt.ThoiGian" name="ThoiGian" required />
+        <label>Thumbnail</label>
+        <input type="file" name="anh" required />
+        <label>NguoiTao</label>
+        <select name="NguoiTao">
+            @foreach (var i in db.NhanVien.ToList())
+            {
+                <option @(lt.NguoiTao == i.IDNhanVien ? "selected" : "") value="@i.IDNhanVien">@i.username</option>
+            }
+        </select>
+        <button>
+            @Html.ActionLink("Trở về", "Index")
+        </button>
+        <input type="submit" value="Cập nhật" />
+    </form>
+
+</body>
+</html>

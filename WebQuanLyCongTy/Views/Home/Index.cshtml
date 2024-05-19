@@ -37,8 +37,13 @@
                                     @Html.ActionLink("Quản lý nhân viên", "Index", "Nhanviens", new { area = "" }, new { @class = "tm-nav-link" })
                                 </li>
 
-                                <li class="tm-nav-li"><a href="about.html" class="tm-nav-link">About</a></li>
-                                <li class="tm-nav-li"><a href="contact.html" class="tm-nav-link">Contact</a></li>
+                                <li class="tm-nav-li">
+                                    @Html.ActionLink("Quản lý lịch trình", "Index", "QuanLyLichTrinhs", new { area = "" }, new { @class = "tm-nav-link" })
+                                </li>
+
+                                <li class="tm-nav-li">
+                                    @Html.ActionLink("Quản lý nhân viên", "Index", "Nhanviens", new { area = "" }, new { @class = "tm-nav-link" })
+                                </li>
                             </ul>
                         </nav>
                     </div>

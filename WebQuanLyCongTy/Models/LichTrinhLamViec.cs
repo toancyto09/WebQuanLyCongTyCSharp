@@ -20,7 +20,7 @@ namespace WebQuanLyCongTy.Models
             this.PhongBan = new HashSet<PhongBan>();
         }
     
-        public int IDLichTrinh { get; set; }
+        public int? IDLichTrinh { get; set; }
         public string TenCongViec { get; set; }
         public Nullable<System.DateTime> ThoiGian { get; set; }
         public string Thumbnail { get; set; }

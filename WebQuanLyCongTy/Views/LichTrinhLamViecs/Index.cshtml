@@ -1,0 +1,130 @@
+﻿@model IEnumerable<WebQuanLyCongTy.Models.LichTrinhLamViec>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quản Lý Nhân Viên - Công Ty TH</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap" rel="stylesheet">
+    <link href="~/css/templatemo-style.css" rel="stylesheet" />
+    <link href="~/css/quanlynhanvien.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="placeholder">
+            <div class="parallax-window" data-parallax="scroll" data-image-src="~/img/simple-house-01.jpg">
+                <div class="tm-header">
+                    <div class="row tm-header-inner">
+                        <div class="col-md-6 col-12">
+                            <img src="~/img/simple-house-logo.png" alt="Logo" class="tm-site-logo" />
+                            <div class="tm-site-text-box">
+                                <h1 class="tm-site-title">Công Ty TH</h1>
+                                <h6 class="tm-site-description">Hỗ Trợ Tài Chính</h6>
+                            </div>
+                        </div>
+                        <nav class="col-md-6 col-12 tm-nav">
+                            <ul class="tm-nav-ul">
+                                <li class="tm-nav-li">
+                                    @Html.ActionLink("Quản lý nhân viên", "Index", "Nhanviens", new { area = "" }, new { @class = "tm-nav-link" })
+                                </li>
+
+                                <li class="tm-nav-li">
+                                    @Html.ActionLink("Quản lý lịch trình", "Index", "QuanLyLichTrinhs", new { area = "" }, new { @class = "tm-nav-link" })
+                                </li>
+
+                                <li class="tm-nav-li">
+                                    @Html.ActionLink("Quản lý thông báo", "Index", "Nhanviens", new { area = "" }, new { @class = "tm-nav-link" })
+                                </li>
+
+                                <li class="tm-nav-li"><a href="about.html" class="tm-nav-link">About</a></li>
+                                <li class="tm-nav-li"><a href="contact.html" class="tm-nav-link">Contact</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="title-section">
+            <h2>Quản Lý Lịch Trình</h2>
+        </section>
+
+        <div class="content">
+            <section class="search-add-section">
+                <div class="search-bar">
+                    <form action="~/LichTrinhLamViecs/Index" method="get">
+                        <input type="text" name="txtSearch" value="@ViewBag.txtSearch" placeholder="Search..." class="search-input">
+                        <button type="submit" class="search-button">Tìm</button>
+                    </form>
+                </div>
+                <form method="get" asp-action="~/LichTrinhLamViecs/Index" style=" display: flex; min-width: 200px; align-items: center; margin-bottom: 0px;">
+                    <div class="form-group">
+                        <label for="filter">Chọn khoảng thời gian:</label>
+                        <select id="filter" name="filter" class="form-control">
+                            <option value="Today">Hôm nay</option>
+                            <option value="ThisWeek">Tuần này</option>
+                            <option value="ThisMonth">Tháng này</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style=" margin-left: 18px; width: 80px; height: 37px; margin-top: 15px;">Lọc</button>
+                </form>
+                <button class="add-button">
+                    @Html.ActionLink("Create New", "Create")
+                </button>
+            </section>
+
+            <section class="employee-table-section">
+                <table class="employee-table">
+                    <thead>
+                        <tr>
+                            <th>Tên công việc</th>
+                            <th>Thời gian</th>
+                            <th>Thumbnail</th>
+                            <th>Nhân viên đăng</th>
+                            <th>Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TenCongViec)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ThoiGian)
+                            </td>
+                            <td>
+                                <img src="~/img/LichTrinh/@item.Thumbnail" style="width:50px"/>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NhanVien.HoTen)
+                            </td>
+
+                            <td>
+                                <button class="action-button edit-button">
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.IDLichTrinh })
+                                </button>
+                                <button class="action-button delete-button">
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.IDLichTrinh })
+                                </button>
+                            </td>
+                        </tr>
+                        }
+                        <!-- More employee rows here -->
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>
