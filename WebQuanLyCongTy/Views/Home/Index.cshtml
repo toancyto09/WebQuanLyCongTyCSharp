@@ -1,4 +1,5 @@
-﻿@{
+﻿@model WebQuanLyCongTy.Controllers.HomeController.IndexViewModel
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -11,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Công Ty TH</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" />
-    <link href="~/css/templatemo-style.css" rel="stylesheet" />   
+    <link href="~/css/trangchu.css" rel="stylesheet" />
 </head>
 <!--
 
@@ -34,15 +35,18 @@
                         <nav class="col-md-6 col-12 tm-nav">
                             <ul class="tm-nav-ul">
                                 <li class="tm-nav-li">
-                                    @Html.ActionLink("Quản lý nhân viên", "Index", "Nhanviens", new { area = "" }, new { @class = "tm-nav-link" })
+                                    <a href="#">Giới thiệu</a>
                                 </li>
-
                                 <li class="tm-nav-li">
-                                    @Html.ActionLink("Quản lý lịch trình", "Index", "QuanLyLichTrinhs", new { area = "" }, new { @class = "tm-nav-link" })
+                                    <a href="#">Liên hệ</a>
                                 </li>
-
                                 <li class="tm-nav-li">
-                                    @Html.ActionLink("Quản lý nhân viên", "Index", "Nhanviens", new { area = "" }, new { @class = "tm-nav-link" })
+                                    <a href="#">Quản lý</a>
+                                    <div class="dropdown-content">
+                                        <a href="#">Quản lý nhân viên</a>
+                                        <a href="#">Lịch trình làm việc</a>
+                                        <a href="#">Bài đăng thông báo</a>
+                                    </div>
                                 </li>
                             </ul>
                         </nav>
@@ -53,81 +57,110 @@
 
         <main>
             <header class="row tm-welcome-section">
-                <div class="search">
-                    <input placeholder="Search..." type="text">
-                    <button type="submit">Tìm kiếm</button>
-                </div>
                 <h2 class="col-12 text-center tm-section-title">Welcome to TH Finance</h2>
-                <p class="col-12 text-center">
-                    Total 3 HTML pages are included in this template. Header image has a parallax
-                    effect. You can feel free to download, edit and use this TemplateMo layout for your commercial or
-                    non-commercial websites.
-                </p>
+                <div class="search">
+                    <form action="@Url.Action("Index", "Home")" method="get">
+                        <input type="text" name="txtSearch" value="@Model.TxtSearch" placeholder="Search..." class="search-input">
+                        <button type="submit" class="search-button">Tìm</button>
+                    </form>
+                </div>
             </header>
 
             <div class="tm-paging-links">
                 <nav>
                     <ul>
-                        <li class="tm-paging-item"><a href="#" class="tm-paging-link active">Thông báo</a></li>
+                        <li class="tm-paging-item"><a href="#" class="tm-paging-link">Thông báo</a></li>
+                    </ul>
+                </nav>
+                <form action="@Url.Action("Index", "Home")" method="get" style="display: flex;">
+                    <div class="select-box">
+                        <select name="filterNotica" class="form-control">
+                            <option value="">--Chọn bộ lọc--</option>
+                            <option value="Today" @(Model.FilterNotica == "Today" ? "selected" : "")>Hôm nay</option>
+                            <option value="ThisWeek" @(Model.FilterNotica == "ThisWeek" ? "selected" : "")>Tuần này</option>
+                            <option value="ThisMonth" @(Model.FilterNotica == "ThisMonth" ? "selected" : "")>Tháng này</option>
+                        </select>
+                    </div>
+                    <button type="submit" style="margin-left: 6px; padding: 0 20px; background-color: #00a8ff; color: white; border: none;">Lọc</button>
+                </form>
+            </div>
+            <!-- Thông Báo -->
+            <div class="title" style="margin-left: 160px;">
+                <h3>Thông báo </h3>
+            </div>
+            <div class="row tm-gallery">
+                <div id="tm-gallery-page-pizza" class="tm-gallery-page">
+
+                    @foreach (var item in Model.BaiDangThongBao)
+                    {
+                        <article class="tm-gallery-item">
+                            <figure style="margin-right: 10px">
+                                <img src="~/img/BaiDang/@item.Thumbnail" alt="Image" class="img-fluid tm-gallery-img" style="min-height: 250px; object-fit: cover; border: 1px solid #ccc; " />
+                                <figcaption>
+                                    <h4 class="tm-gallery-title">@Html.DisplayFor(modelItem => item.TieuDe)</h4>
+                                    <p class="tm-gallery-description">
+                                        @Html.DisplayFor(modelItem => item.NoiDung)
+                                    </p>
+                                    <p style="font-size: 1.25rem; color: #2F956D;"> @Html.DisplayFor(modelItem => item.NhanVien.HoTen)</p>
+                                    <p class="tm-gallery-price">@Html.DisplayFor(modelItem => item.ThoiGianTao)</p>
+                                </figcaption>
+                            </figure>
+                        </article>
+                    }
+
+                </div>
+            </div>
+
+
+            <!-- Lich Trinh -->
+            <div class="tm-paging-links">
+                <nav>
+                    <ul>
                         <li class="tm-paging-item"><a href="#" class="tm-paging-link">Lịch trình làm việc</a></li>
                     </ul>
                 </nav>
+                <form action="@Url.Action("Index", "Home")" method="get" style="display: flex;">
+                    <div class="select-box">
+                        <select name="filterSchedule" class="form-control">
+                            <option value="">--Chọn bộ lọc--</option>
+                            <option value="Today" @(Model.FilterSchedule == "Today" ? "selected" : "")>Hôm nay</option>
+                            <option value="ThisWeek" @(Model.FilterSchedule == "ThisWeek" ? "selected" : "")>Tuần này</option>
+                            <option value="ThisMonth" @(Model.FilterSchedule == "ThisMonth" ? "selected" : "")>Tháng này</option>
+                        </select>
+                    </div>
+                    <button type="submit" style="margin-left: 6px; padding: 0 20px; background-color: #00a8ff; color: white; border: none;">Lọc</button>
+                </form>
             </div>
-
-            <!-- Gallery -->
+            <div class="title" style="margin-left: 160px;">
+                <h3>Lịch Trình Làm Việc</h3>
+            </div>
             <div class="row tm-gallery">
-                <!-- gallery page 1 -->
                 <div id="tm-gallery-page-pizza" class="tm-gallery-page">
-                    <article class="tm-gallery-item">
-                        <figure>
-                            <img src="~/img/BaiDang/01.jpg" alt="Image" class="img-fluid tm-gallery-img" />
-                            <figcaption>
-                                <h4 class="tm-gallery-title">Fusce dictum finibus</h4>
-                                <p class="tm-gallery-description">
-                                    Nam in suscipit nisi, sit amet consectetur metus. Ut sit amet tellus
-                                    accumsan
-                                </p>
-                                <p class="tm-gallery-price">$45 / $55</p>
-                            </figcaption>
-                        </figure>
-                    </article>
-                    <article class="tm-gallery-item">
-                        <figure>
-                            <img src="~/img/BaiDang/02.jpg" alt="Image" class="img-fluid tm-gallery-img" />
-                            <figcaption>
-                                <h4 class="tm-gallery-title">Salad Menu One</h4>
-                                <p class="tm-gallery-description">
-                                    Proin eu velit egestas, viverra sapien eget, consequat nunc.
-                                    Vestibulum tristique
-                                </p>
-                                <p class="tm-gallery-price">$25</p>
-                            </figcaption>
-                        </figure>
-                    </article>
-                </div> <!-- gallery page 1 -->
+
+                    @foreach (var item in Model.LichTrinhLamViec)
+                    {
+                        <article class="tm-gallery-item">
+                            <figure style="margin-right: 10px">
+                                <img src="~/img/LichTrinh/@item.Thumbnail" alt="Image" class="img-fluid tm-gallery-img" style="min-height: 250px; object-fit: cover; border: 1px solid #ccc; " />
+                                <figcaption>
+                                    <h4 class="tm-gallery-nameword">@Html.DisplayFor(modelItem => item.TenCongViec)</h4>
+                                    <p style="font-size: 1.25rem; color: #2F956D;"> @Html.DisplayFor(modelItem => item.NhanVien.HoTen)</p>
+                                    <p class="tm-gallery-price">@Html.DisplayFor(modelItem => item.ThoiGian)</p>
+                                </figcaption>
+                            </figure>
+                        </article>
+                    }
+
+                </div>
             </div>
         </main>
 
         <footer class="tm-footer text-center">
-            <p>Copyright &copy; 2024 Simple House
+            <p>Copyright &copy; 2024 Huynh Van Toan
         </footer>
     </div>
     <script src="js/jquery.min.js"></script>
     <script src="js/parallax.min.js"></script>
-    <script>
-		$(document).ready(function () {
-			// Handle click on paging links
-			$('.tm-paging-link').click(function (e) {
-				e.preventDefault();
-
-				var page = $(this).text().toLowerCase();
-				$('.tm-gallery-page').addClass('hidden');
-				$('#tm-gallery-page-' + page).removeClass('hidden');
-				$('.tm-paging-link').removeClass('active');
-				$(this).addClass("active");
-			});
-		});
-    </script>
 </body>
 
 </html>

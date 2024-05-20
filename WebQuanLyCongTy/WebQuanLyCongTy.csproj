@@ -180,7 +180,7 @@
     <Content Include="css\quanlybaidang.css" />
     <Content Include="css\quanlylichtrinh.css" />
     <Content Include="css\quanlynhanvien.css" />
-    <Content Include="css\templatemo-style.css" />
+    <Content Include="css\trangchu.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
