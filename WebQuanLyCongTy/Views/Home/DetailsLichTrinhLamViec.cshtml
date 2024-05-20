@@ -1,0 +1,57 @@
+﻿@model WebQuanLyCongTy.Models.LichTrinhLamViec
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tọa đàm giới thiệu Chương trình khoa học</title>
+    <link href="~/css/detail.css" rel="stylesheet" />
+    <style>
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="breadcrumbs">
+            <a href="@Url.Action("Index", "Home")">TRANG CHỦ</a> >
+            <a href="#">LỊCH TRÌNH LÀM VIỆC</a> >
+            <a href="#">@Model.TenCongViec</a>
+        </nav>
+    </header>
+
+
+    <div class="container">
+        <div class="container-first">
+            <h1 class="title">
+                @Model.TenCongViec
+            </h1>
+            <p class="date">
+            Thời gian bắt đầu: 
+            @Model.ThoiGian
+            </p>
+            <div class="content">
+                <p>
+                    @Model.NhanVien.PhongBan.TenPhongBan
+                </p>
+                <p>
+                    Người tạo
+                    @Model.NhanVien.HoTen
+                </p>
+            </div>
+            <div class="image-container">
+                <img src="~/img/LichTrinh/@Model.Thumbnail"
+                     alt="Toàn cảnh Tọa đàm">
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+

@@ -1,0 +1,53 @@
+﻿@model WebQuanLyCongTy.Models.BaiDangThongBao
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tọa đàm giới thiệu Chương trình khoa học</title>
+    <link href="~/css/detail.css" rel="stylesheet" />
+    <style>
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="breadcrumbs">
+            <a href="@Url.Action("Index", "Home")">TRANG CHỦ</a> >
+            <a href="#">THÔNG BÁO</a> >
+            <a href="#">@Model.TieuDe</a>
+        </nav>
+    </header>
+
+
+    <div class="container">
+        <div class="container-first">
+            <h1 class="title">
+                @Model.TieuDe
+            </h1>
+            <p class="date">@Model.ThoiGianTao</p>
+            <p class="date">@Model.NhanVien.PhongBan.TenPhongBan</p>
+            <div class="content">
+                <p>
+                    @Model.NoiDung
+                </p>
+                <p>
+                    @Model.NoiDung
+                </p>
+            </div>
+            <div class="image-container">
+                <img src="~/img/BaiDang/@Model.Thumbnail"
+                     alt="Toàn cảnh Tọa đàm">
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

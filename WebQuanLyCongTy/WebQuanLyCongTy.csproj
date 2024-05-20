@@ -177,10 +177,11 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="css\all.min.css" />
+    <Content Include="css\detail.css" />
     <Content Include="css\quanlybaidang.css" />
     <Content Include="css\quanlylichtrinh.css" />
     <Content Include="css\quanlynhanvien.css" />
-    <Content Include="css\templatemo-style.css" />
+    <Content Include="css\trangchu.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -249,6 +250,8 @@
     <Content Include="Views\BaiDangThongBaos\Details.cshtml" />
     <Content Include="Views\BaiDangThongBaos\Edit.cshtml" />
     <Content Include="Views\BaiDangThongBaos\Index.cshtml" />
+    <Content Include="Views\Home\DetailsBaiDangThongBao.cshtml" />
+    <Content Include="Views\Home\DetailsLichTrinhLamViec.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
