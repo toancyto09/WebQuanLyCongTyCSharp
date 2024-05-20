@@ -512,9 +512,11 @@ address {
     font-weight: 400;
     color: #1A6692;
     margin-bottom: 10px;
-    height: 60px;
+    height: 30px;
+    width: 250px;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .tm-gallery-description {
@@ -524,7 +526,6 @@ address {
     white-space: nowrap;
     overflow: hidden; 
     text-overflow: ellipsis; 
-    padding: 10px; 
     font-family: Arial, sans-serif;
 }
 

@@ -86,6 +86,42 @@ namespace WebQuanLyCongTy.Controllers
             return View(model);
         }
 
+        //Xem chi tiết Thong Bao
+        public ActionResult DetailsBaiDangThongBao(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            BaiDangThongBao baiDangThongBao = db.BaiDangThongBao.Include(b => b.NhanVien).Include(b => b.TheLoai1).FirstOrDefault(b => b.IDBaiDang == id);
+
+            if (baiDangThongBao == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(baiDangThongBao);
+        }
+
+        //Xem Chi tiet Lich trinh
+        public ActionResult DetailsLichTrinhLamViec(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            LichTrinhLamViec lichTrinhLamViec = db.LichTrinhLamViec.Include(l => l.NhanVien).FirstOrDefault(l => l.IDLichTrinh == id);
+
+            if (lichTrinhLamViec == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(lichTrinhLamViec);
+        }
+
         public class IndexViewModel
         {
             public List<BaiDangThongBao> BaiDangThongBao { get; set; }

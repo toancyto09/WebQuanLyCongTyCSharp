@@ -15,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap" rel="stylesheet">
     <link href="~/css/templatemo-style.css" rel="stylesheet" />
     <link href="~/css/quanlynhanvien.css" rel="stylesheet" />
+    <link href="~/css/trangchu.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -33,15 +34,21 @@
                         <nav class="col-md-6 col-12 tm-nav">
                             <ul class="tm-nav-ul">
                                 <li class="tm-nav-li">
-                                    @Html.ActionLink("Quản lý nhân viên", "Index", "Nhanviens", new { area = "" }, new
-                                    {
-                                        @class =
-                                    "tm-nav-link"
-                                    })
+                                    <a href="@Url.Action("Index", "Home")">Trang chủ</a>
                                 </li>
-
-                                <li class="tm-nav-li"><a href="about.html" class="tm-nav-link">About</a></li>
-                                <li class="tm-nav-li"><a href="contact.html" class="tm-nav-link">Contact</a></li>
+                                <li class="tm-nav-li">
+                                    <a href="@Url.Action("GioiThieu", "Home")">Giới thiệu</a>
+                                </li>
+                                <li class="tm-nav-li">
+                                    <a href="#">Quản lý</a>
+                                    <div class="dropdown-content">
+                                        <a href="@Url.Action("Index", "LichTrinhLamViecs")">Lịch trình làm việc</a>
+                                        <a href="@Url.Action("Index", "BaiDangThongBaos")">Bài đăng thông báo</a>
+                                        <a href="@Url.Action("Index", "NhanViens")">Nhân viên</a>
+                                        <a href="@Url.Action("Index", "PhongBans")">Phòng Ban</a>
+                                        <a href="@Url.Action("Index", "TheLoais")">Thể loại</a>
+                                    </div>
+                                </li>
                             </ul>
                         </nav>
                     </div>

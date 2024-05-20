@@ -35,17 +35,19 @@
                         <nav class="col-md-6 col-12 tm-nav">
                             <ul class="tm-nav-ul">
                                 <li class="tm-nav-li">
-                                    <a href="#">Giới thiệu</a>
+                                    <a href="@Url.Action("Index", "Home")">Trang chủ</a>
                                 </li>
                                 <li class="tm-nav-li">
-                                    <a href="#">Liên hệ</a>
+                                    <a href="@Url.Action("GioiThieu", "Home")">Giới thiệu</a>
                                 </li>
                                 <li class="tm-nav-li">
                                     <a href="#">Quản lý</a>
                                     <div class="dropdown-content">
-                                        <a href="#">Quản lý nhân viên</a>
-                                        <a href="#">Lịch trình làm việc</a>
-                                        <a href="#">Bài đăng thông báo</a>
+                                        <a href="@Url.Action("Index", "LichTrinhLamViecs")">Lịch trình làm việc</a>
+                                        <a href="@Url.Action("Index", "BaiDangThongBaos")">Bài đăng thông báo</a>
+                                        <a href="@Url.Action("Index", "NhanViens")">Nhân viên</a>
+                                        <a href="@Url.Action("Index", "PhongBans")">Phòng Ban</a>
+                                        <a href="@Url.Action("Index", "TheLoais")">Thể loại</a>
                                     </div>
                                 </li>
                             </ul>
@@ -97,11 +99,14 @@
                             <figure style="margin-right: 10px">
                                 <img src="~/img/BaiDang/@item.Thumbnail" alt="Image" class="img-fluid tm-gallery-img" style="min-height: 250px; object-fit: cover; border: 1px solid #ccc; " />
                                 <figcaption>
-                                    <h4 class="tm-gallery-title">@Html.DisplayFor(modelItem => item.TieuDe)</h4>
+                                    <h4 class="tm-gallery-title">
+                                        <a href="@Url.Action("DetailsBaiDangThongBao", "Home", new { id = item.IDBaiDang})" style="color: #6478db; font-weight: bold;">@Html.DisplayFor(modelItem => item.TieuDe)</a>
+                                    </h4>
                                     <p class="tm-gallery-description">
                                         @Html.DisplayFor(modelItem => item.NoiDung)
                                     </p>
                                     <p style="font-size: 1.25rem; color: #2F956D;"> @Html.DisplayFor(modelItem => item.NhanVien.HoTen)</p>
+                                    
                                     <p class="tm-gallery-price">@Html.DisplayFor(modelItem => item.ThoiGianTao)</p>
                                 </figcaption>
                             </figure>
@@ -143,7 +148,9 @@
                             <figure style="margin-right: 10px">
                                 <img src="~/img/LichTrinh/@item.Thumbnail" alt="Image" class="img-fluid tm-gallery-img" style="min-height: 250px; object-fit: cover; border: 1px solid #ccc; " />
                                 <figcaption>
-                                    <h4 class="tm-gallery-nameword">@Html.DisplayFor(modelItem => item.TenCongViec)</h4>
+                                    <h4 class="tm-gallery-nameword">
+                                        <a href="@Url.Action("DetailsLichTrinhLamViec", "Home", new { id = item.IDLichTrinh})" style="color: #6478db; font-weight: bold;">@Html.DisplayFor(modelItem => item.TenCongViec)</a>
+                                    </h4>
                                     <p style="font-size: 1.25rem; color: #2F956D;"> @Html.DisplayFor(modelItem => item.NhanVien.HoTen)</p>
                                     <p class="tm-gallery-price">@Html.DisplayFor(modelItem => item.ThoiGian)</p>
                                 </figcaption>
