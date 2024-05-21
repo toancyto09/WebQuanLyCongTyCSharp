@@ -81,7 +81,6 @@ namespace WebQuanLyCongTy.Controllers
                 anh.SaveAs(pathImage);
                 baiDangThongBao.Thumbnail = anh.FileName;
             }
-
             db.BaiDangThongBao.Add(baiDangThongBao);
             db.SaveChanges();
             return RedirectToAction("Index");

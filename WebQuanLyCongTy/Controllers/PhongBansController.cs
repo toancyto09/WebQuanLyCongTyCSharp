@@ -15,9 +15,14 @@ namespace WebQuanLyCongTy.Controllers
         private dbQuanLyCongTyEntities db = new dbQuanLyCongTyEntities();
 
         // GET: PhongBans
-        public ActionResult Index()
+        public ActionResult Index(string txtSearch)
         {
-            return View(db.PhongBan.ToList());
+            var phongBans = from p in db.PhongBan select p;
+            if (!String.IsNullOrEmpty(txtSearch))
+            {
+                phongBans = phongBans.Where(p => p.TenPhongBan.Contains(txtSearch));
+            }
+            return View(phongBans.ToList());
         }
 
         // GET: PhongBans/Details/5

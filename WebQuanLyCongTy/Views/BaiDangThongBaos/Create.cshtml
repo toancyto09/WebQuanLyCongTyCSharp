@@ -17,7 +17,8 @@
 
     <form action="~/BaiDangThongBaos/Create" method="post" enctype="multipart/form-data">
         <label>Tiêu đề bài viết</label>
-        <input type="text" name="TieuDe" placeholder="Tiêu đề" required />
+        <input type="text" name="TieuDe" placeholder="Tiêu đề" required minlength="20" maxlength="150" />
+        <span id="titleError" class="text-danger"></span>
         <label>Thumbnail</label>
         <input type="file" name="anh" required />
         <label>Nội dung</label>
@@ -43,5 +44,22 @@
         </button>
         <input type="submit" value="Thêm" />
     </form>
+
+    <script>
+        document.getElementById('createForm').addEventListener('submit', function(event) {
+            var tieuDeInput = document.getElementById('TieuDe');
+            var titleError = document.getElementById('titleError');
+            var tieuDe = tieuDeInput.value;
+
+            if (tieuDe.length < 20 || tieuDe.length > 150) {
+                event.preventDefault();
+                titleError.textContent = 'Tiêu đề phải có độ dài từ 20 đến 150 ký tự.';
+                tieuDeInput.focus();
+            } else {
+                titleError.textContent = ''; 
+            }
+        });
+    </script>
+
 </body>
 </html>

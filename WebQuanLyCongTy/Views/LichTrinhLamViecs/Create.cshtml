@@ -18,7 +18,7 @@
 
     <form action="~/LichTrinhLamViecs/Create" method="post" enctype="multipart/form-data">
         <label>Tên công việc</label>
-        <input type="text" name="TenCongViec" placeholder="Tên công việc" required />
+        <input type="text" name="TenCongViec" placeholder="Tên công việc" required minlength="20" maxlength="150"/>
         <label>Thời gian</label>
         <input type="datetime-local" name="ThoiGian" required />
         <label>Thumbnail</label>

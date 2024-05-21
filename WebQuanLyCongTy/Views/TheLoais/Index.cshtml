@@ -1,7 +1,7 @@
-﻿@model IEnumerable<WebQuanLyCongTy.Models.PhongBan>
+﻿@model IEnumerable<WebQuanLyCongTy.Models.TheLoai>
 
 @{
-    ViewBag.Title = "Index";
+    Layout = null;
 }
 
 <!DOCTYPE html>
@@ -57,14 +57,14 @@
         </div>
 
         <section class="title-section">
-            <h2>Quản Lý Phòng Ban</h2>
+            <h2>Quản Lý Thể Loại</h2>
         </section>
 
         <div class="content">
             <section class="search-add-section">
 
                 <div class="search-bar">
-                    <form action="~/PhongBans/Index" method="get">
+                    <form action="~/TheLoais/Index" method="get">
                         <input type="text" name="txtSearch" value="@ViewBag.txtSearch" placeholder="Search..." class="search-input">
                         <button type="submit" class="search-button">Tìm</button>
                     </form>
@@ -79,31 +79,35 @@
                 <table class="employee-table">
                     <thead>
                         <tr>
-                            <th>ID Phòng Ban</th>
-                            <th>Tên phòng ban</th>
+                            <th>ID Thể loại</th>
+                            <th>Tên thể loại</th>
+                            <th>Mô tả</th>
                             <th>Hành động</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr>
-                                <td>
-                                    
-                                    @Html.DisplayFor(modelItem => item.IDPhongBan)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.TenPhongBan)
-                                </td>
-                                <td>
-                                    <button class="action-button edit-button">
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.IDPhongBan })
-                                    </button>
-                                    <button class="action-button delete-button">
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.IDPhongBan })
-                                    </button>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>
+
+                                @Html.DisplayFor(modelItem => item.IDTheLoai)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TenTheLoai)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MoTa)
+                            </td>
+                            <td>
+                                <button class="action-button edit-button">
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.IDTheLoai })
+                                </button>
+                                <button class="action-button delete-button">
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.IDTheLoai })
+                                </button>
+                            </td>
+                        </tr>
                         }
                         <!-- More employee rows here -->
                     </tbody>

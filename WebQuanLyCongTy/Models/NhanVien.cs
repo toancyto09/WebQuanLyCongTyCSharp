@@ -11,7 +11,7 @@ namespace WebQuanLyCongTy.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using WebQuanLyCongTy.Validators;
     public partial class NhanVien
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,6 +25,7 @@ namespace WebQuanLyCongTy.Models
         public string username { get; set; }
         public string password { get; set; }
         public string HoTen { get; set; }
+        [PhoneNumber]
         public string SDT { get; set; }
         public string Email { get; set; }
         public Nullable<System.DateTime> NgaySinh { get; set; }
