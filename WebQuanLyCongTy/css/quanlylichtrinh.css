@@ -71,4 +71,7 @@ button {
         font-size: 16px;
         text-decoration: none;
     }
-
+.text-danger{
+    color:red;
+    margin-bottom: 10px;
+}

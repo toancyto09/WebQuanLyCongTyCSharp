@@ -67,13 +67,21 @@ namespace WebQuanLyCongTy.Controllers
         {
             ViewBag.NguoiTao = new SelectList(db.NhanVien, "IDNhanVien", "username");
             ViewBag.TheLoai = new SelectList(db.TheLoai, "IDTheLoai", "TenTheLoai");
-            return View();
+            return View(new BaiDangThongBao());
         }
 
         // POST: BaiDangThongBaos/Create
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(BaiDangThongBao baiDangThongBao, HttpPostedFileBase anh)
         {
+            if (!ModelState.IsValid)
+            {
+                ViewBag.NguoiTao = new SelectList(db.NhanVien, "IDNhanVien", "username");
+                ViewBag.TheLoai = new SelectList(db.TheLoai, "IDTheLoai", "TenTheLoai");
+                return View(new BaiDangThongBao());
+            }
+
             if (anh != null)
             {
                 String pathroot = Server.MapPath("/img/BaiDang/");

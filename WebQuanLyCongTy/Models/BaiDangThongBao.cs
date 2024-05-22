@@ -20,8 +20,10 @@ namespace WebQuanLyCongTy.Models
         {
             this.PhongBan = new HashSet<PhongBan>();
         }
-    
+
         public int? IDBaiDang { get; set; }
+        [Required(ErrorMessage = "Vui lòng nhập tiêu đề.")]
+        [StringLength(150,MinimumLength =20,ErrorMessage = "Từ 20 đến 150 kí tự")]
         public string TieuDe { get; set; }
         public string Thumbnail { get; set; }
         public string NoiDung { get; set; }

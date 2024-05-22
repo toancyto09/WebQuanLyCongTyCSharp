@@ -1,4 +1,5 @@
-﻿@{
+﻿@model WebQuanLyCongTy.Models.BaiDangThongBao
+@{
     Layout = null;
     WebQuanLyCongTy.Models.dbQuanLyCongTyEntities db = new WebQuanLyCongTy.Models.dbQuanLyCongTyEntities();
 }
@@ -16,9 +17,11 @@
     <h2 style="background-color: green; height: 58px; text-align: center; color: white; padding: 8px;">Tạo Thông Báo Mới</h2>
 
     <form action="~/BaiDangThongBaos/Create" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <label>Tiêu đề bài viết</label>
         <input type="text" name="TieuDe" placeholder="Tiêu đề" required minlength="20" maxlength="150" />
-        <span id="titleError" class="text-danger"></span>
+        @Html.ValidationMessageFor(model => model.TieuDe, "", new { @class = "text-danger" })
         <label>Thumbnail</label>
         <input type="file" name="anh" required />
         <label>Nội dung</label>

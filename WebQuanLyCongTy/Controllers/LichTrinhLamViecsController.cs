@@ -66,12 +66,17 @@ namespace WebQuanLyCongTy.Controllers
         public ActionResult Create()
         {
             ViewBag.NguoiTao = new SelectList(db.NhanVien, "IDNhanVien", "username");
-            return View();
+            return View(new LichTrinhLamViec());
         }
 
         [HttpPost]
         public ActionResult Create(LichTrinhLamViec lichTrinhLamViec, HttpPostedFileBase anh)
         {
+            if (!ModelState.IsValid)
+            {
+                ViewBag.NguoiTao = new SelectList(db.NhanVien, "IDNhanVien", "username");
+                return View(new LichTrinhLamViec());
+            }
             if(anh != null)
             {
                 String pathroot = Server.MapPath("/img/LichTrinh/");

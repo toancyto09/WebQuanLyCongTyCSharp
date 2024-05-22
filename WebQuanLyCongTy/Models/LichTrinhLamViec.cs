@@ -22,6 +22,7 @@ namespace WebQuanLyCongTy.Models
         }
     
         public int? IDLichTrinh { get; set; }
+        [StringLength(150, MinimumLength = 20, ErrorMessage = "Từ 20 đến 150 kí tự")]
         public string TenCongViec { get; set; }
         public Nullable<System.DateTime> ThoiGian { get; set; }
         public string Thumbnail { get; set; }

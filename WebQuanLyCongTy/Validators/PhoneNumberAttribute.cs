@@ -22,7 +22,7 @@ namespace WebQuanLyCongTy.Validators
                 return new ValidationResult("Số điện thoại phải có 10 số");
             }
 
-            string[] validPrefixes = { "090", "098", "091", "031", "035", "038" };
+            string[] validPrefixes = { "090", "098", "091", "031", "035", "038", "033" };
             bool isValidPrefix = false;
             foreach(var prefix in validPrefixes)
             {
