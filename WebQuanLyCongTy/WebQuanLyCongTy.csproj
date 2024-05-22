@@ -133,6 +133,7 @@
     <Compile Include="Controllers\LichTrinhLamViecsController.cs" />
     <Compile Include="Controllers\NhanViensController.cs" />
     <Compile Include="Controllers\PhongBansController.cs" />
+    <Compile Include="Controllers\TheLoaisController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -170,6 +171,7 @@
       <DependentUpon>ModelEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\PhoneNumberAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -252,6 +254,10 @@
     <Content Include="Views\BaiDangThongBaos\Index.cshtml" />
     <Content Include="Views\Home\DetailsBaiDangThongBao.cshtml" />
     <Content Include="Views\Home\DetailsLichTrinhLamViec.cshtml" />
+    <Content Include="Views\TheLoais\Create.cshtml" />
+    <Content Include="Views\TheLoais\Delete.cshtml" />
+    <Content Include="Views\TheLoais\Edit.cshtml" />
+    <Content Include="Views\TheLoais\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

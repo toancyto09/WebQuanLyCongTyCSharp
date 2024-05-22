@@ -18,9 +18,9 @@ namespace WebQuanLyCongTy.Controllers
         public ActionResult Index(String txtSearch)
         {
             var nhanVien = db.NhanVien.Include(n => n.ChucVu).Include(n => n.PhongBan);
-            if (txtSearch != null)
+            if (!String.IsNullOrEmpty(txtSearch))
             {
-                nhanVien = nhanVien.Where(nv => nv.HoTen.Contains(txtSearch) || nv.username.Contains(txtSearch) || nv.Email.Contains(txtSearch));
+                nhanVien = nhanVien.Where(nv => nv.HoTen.Contains(txtSearch) || nv.username.Contains(txtSearch) || nv.Email.Contains(txtSearch) || nv.SDT.Contains(txtSearch));
                 ViewBag.txtSearch = txtSearch;
             }
             return View(nhanVien.ToList());
@@ -50,8 +50,6 @@ namespace WebQuanLyCongTy.Controllers
         }
 
         // POST: NhanViens/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IDNhanVien,username,password,HoTen,SDT,Email,NgaySinh,status,IDPhongBan,MaChucVu")] NhanVien nhanVien)
@@ -86,8 +84,6 @@ namespace WebQuanLyCongTy.Controllers
         }
 
         // POST: NhanViens/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "IDNhanVien,username,password,HoTen,SDT,Email,NgaySinh,status,IDPhongBan,MaChucVu")] NhanVien nhanVien)

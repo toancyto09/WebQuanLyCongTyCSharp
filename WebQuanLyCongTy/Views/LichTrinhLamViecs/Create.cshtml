@@ -1,4 +1,4 @@
-﻿
+﻿@model WebQuanLyCongTy.Models.LichTrinhLamViec
 @{
     Layout = null;
     WebQuanLyCongTy.Models.dbQuanLyCongTyEntities db = new WebQuanLyCongTy.Models.dbQuanLyCongTyEntities();
@@ -17,8 +17,11 @@
     <h2 style="background-color: green; height: 58px; text-align: center; color: white; padding: 8px;">Tạo lịch trình mới</h2>
 
     <form action="~/LichTrinhLamViecs/Create" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <label>Tên công việc</label>
-        <input type="text" name="TenCongViec" placeholder="Tên công việc" required />
+        <input type="text" name="TenCongViec" placeholder="Tên công việc" required minlength="20" maxlength="150" />
+        @Html.ValidationMessageFor(model => model.TenCongViec, "", new { @class = "text-danger" })
         <label>Thời gian</label>
         <input type="datetime-local" name="ThoiGian" required />
         <label>Thumbnail</label>

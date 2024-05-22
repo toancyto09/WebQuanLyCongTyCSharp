@@ -1,7 +1,7 @@
-﻿@model IEnumerable<WebQuanLyCongTy.Models.NhanVien>
+﻿@model IEnumerable<WebQuanLyCongTy.Models.TheLoai>
 
 @{
-    ViewBag.Title = "Index";
+    Layout = null;
 }
 
 <!DOCTYPE html>
@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Quản Lý Nhân Viên - Công Ty TH</title>
+    <title>Quản Phòng Ban - Công Ty TH</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap" rel="stylesheet">
     <link href="~/css/templatemo-style.css" rel="stylesheet" />
     <link href="~/css/quanlynhanvien.css" rel="stylesheet" />
@@ -57,18 +57,18 @@
         </div>
 
         <section class="title-section">
-            <h2>Quản Lý Nhân Viên</h2>
+            <h2>Quản Lý Thể Loại</h2>
         </section>
 
         <div class="content">
             <section class="search-add-section">
-                
+
                 <div class="search-bar">
-                    <form action="~/NhanViens/Index" method="get">
+                    <form action="~/TheLoais/Index" method="get">
                         <input type="text" name="txtSearch" value="@ViewBag.txtSearch" placeholder="Search..." class="search-input">
                         <button type="submit" class="search-button">Tìm</button>
                     </form>
-                   
+
                 </div>
                 <button class="add-button">
                     @Html.ActionLink("Create New", "Create")
@@ -79,57 +79,38 @@
                 <table class="employee-table">
                     <thead>
                         <tr>
-                            <th>Username</th>
-                            <th>Password</th>
-                            <th>Họ Tên</th>
-                            <th>Số Điện Thoại</th>
-                            <th>Email</th>
-                            <th>Ngày Sinh</th>
-                            <th>Chức Vụ</th>
-                            <th>Phòng Ban</th>
-                            <th>Hành Động</th>
+                            <th>ID Thể loại</th>
+                            <th>Tên thể loại</th>
+                            <th>Mô tả</th>
+                            <th>Hành động</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.username)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.password)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.HoTen)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.SDT)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Email)
-                                </td>
-                                <td>
-                                    @String.Format("{0:dd/MM/yyyy}", item.NgaySinh)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.ChucVu.TenChucVu)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.PhongBan.TenPhongBan)
-                                </td>
-                                <td>
-                                    <button class="action-button edit-button">
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.IDNhanVien })
-                                    </button>
-                                    <button class="action-button delete-button">
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.IDNhanVien })
-                                    </button>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>
+
+                                @Html.DisplayFor(modelItem => item.IDTheLoai)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TenTheLoai)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MoTa)
+                            </td>
+                            <td>
+                                <button class="action-button edit-button">
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.IDTheLoai })
+                                </button>
+                                <button class="action-button delete-button">
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.IDTheLoai })
+                                </button>
+                            </td>
+                        </tr>
                         }
-                            <!-- More employee rows here -->
-                        </tbody>
+                        <!-- More employee rows here -->
+                    </tbody>
                 </table>
             </section>
         </div>

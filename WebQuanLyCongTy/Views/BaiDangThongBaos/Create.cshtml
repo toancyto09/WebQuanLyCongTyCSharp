@@ -1,4 +1,5 @@
-﻿@{
+﻿@model WebQuanLyCongTy.Models.BaiDangThongBao
+@{
     Layout = null;
     WebQuanLyCongTy.Models.dbQuanLyCongTyEntities db = new WebQuanLyCongTy.Models.dbQuanLyCongTyEntities();
 }
@@ -16,8 +17,11 @@
     <h2 style="background-color: green; height: 58px; text-align: center; color: white; padding: 8px;">Tạo Thông Báo Mới</h2>
 
     <form action="~/BaiDangThongBaos/Create" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <label>Tiêu đề bài viết</label>
-        <input type="text" name="TieuDe" placeholder="Tiêu đề" required />
+        <input type="text" name="TieuDe" placeholder="Tiêu đề" required minlength="20" maxlength="150" />
+        @Html.ValidationMessageFor(model => model.TieuDe, "", new { @class = "text-danger" })
         <label>Thumbnail</label>
         <input type="file" name="anh" required />
         <label>Nội dung</label>
@@ -43,5 +47,22 @@
         </button>
         <input type="submit" value="Thêm" />
     </form>
+
+    <script>
+        document.getElementById('createForm').addEventListener('submit', function(event) {
+            var tieuDeInput = document.getElementById('TieuDe');
+            var titleError = document.getElementById('titleError');
+            var tieuDe = tieuDeInput.value;
+
+            if (tieuDe.length < 20 || tieuDe.length > 150) {
+                event.preventDefault();
+                titleError.textContent = 'Tiêu đề phải có độ dài từ 20 đến 150 ký tự.';
+                tieuDeInput.focus();
+            } else {
+                titleError.textContent = ''; 
+            }
+        });
+    </script>
+
 </body>
 </html>

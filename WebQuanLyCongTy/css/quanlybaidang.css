@@ -54,3 +54,7 @@ dd {
         background-color: #0056b3;
         color: white;
     }
+.text-danger {
+    color: red;
+    margin-bottom: 10px;
+}

@@ -20,7 +20,7 @@
     <form action="~/LichTrinhLamViecs/Edit" method="post" enctype="multipart/form-data">
         <input name="IDLichTrinh" type="hidden" value="@lt.IDLichTrinh" />
         <label>Tên công việc</label>
-        <input type="text" name="TenCongViec" value="@lt.TenCongViec" placeholder="Tên công việc" required />
+        <input type="text" name="TenCongViec" value="@lt.TenCongViec" placeholder="Tên công việc" required minlength="20" maxlength="150" />
         <label>Thời gian</label>
         <input type="datetime-local" value="@lt.ThoiGian" name="ThoiGian" required />
         <label>Thumbnail</label>
